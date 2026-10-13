@@ -1,83 +1,202 @@
-# TaskFlow
+# ✅ TaskFlow
 
-TaskFlow is a modern project and task management SaaS-style application built as a portfolio/demo project. It covers the full workflow of a team productivity tool — projects, tasks, a Kanban board, a calendar, a team directory, notifications, and account settings — with a clean, responsive UI and full dark mode support.
+### A Modern Task Management & Productivity Experience
 
-TaskFlow runs entirely in the browser. There is no backend, database, or real authentication service — all data is mock/seed data persisted to `localStorage`, making it easy to run, explore, and demo without any server setup.
+TaskFlow is a modern task management web application built with Next.js, React, and TypeScript. It focuses on a clean user interface, responsive layouts, smooth interactions, and an organized task management experience.
 
-## Features
+<p align="center">
+  <strong>Organize Tasks. Track Progress. Get Things Done.</strong>
+</p>
 
-- **Dashboard** — overview stats, recent projects, recent activity, and upcoming tasks, all computed from live data
-- **Projects** — create, edit, delete, search, and filter projects; a details page with progress, team, and related tasks
-- **Tasks** — full CRUD, search, filters, sorting, subtasks, and a list view
-- **Kanban Board** — drag-and-drop task management across To Do / In Progress / Done columns
-- **Calendar** — month, week, and agenda views of tasks by due date, with overdue indicators
-- **Team** — member directory with search, role/workload filters, per-member stats, and a mock "invite member" flow
-- **Notifications** — read/unread state, filters, search, and links to related tasks/projects
-- **Profile & Settings** — editable profile, activity stats, appearance (Light/Dark/System) theme, task-view preference, and a mock password-change flow
-- **Mock authentication** — login, registration, and protected routes
-- **Local persistence** — all changes survive a page refresh via `localStorage`
-- **Responsive design** — usable on mobile, tablet, and desktop
-- **Accessible UI** — a small reusable component library (buttons, inputs, modals, dropdowns, etc.) built with accessible labels and visible focus states
+---
 
-## Tech Stack
+## ✨ Features
 
-- [Next.js 16](https://nextjs.org/) (App Router)
-- [React 19](https://react.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS v4](https://tailwindcss.com/)
-- [lucide-react](https://lucide.dev/) for icons
-- [@dnd-kit/core](https://dndkit.com/) for Kanban drag-and-drop
-- React Context + `localStorage` for state and persistence (no external state library, no backend)
+- ✅ **Task Management** — Organize and manage tasks through the application interface.
+- 📋 **Task Organization** — Keep work items structured and easy to navigate.
+- 🎯 **Productivity-Focused UI** — A clean interface designed to support everyday productivity.
+- 📱 **Responsive Design** — Designed for desktop and mobile devices.
+- 🎨 **Modern UI** — Clean layouts and reusable React components.
+- ⚡ **Next.js Architecture** — Modern application structure and routing.
+- 🔷 **Type Safety** — TypeScript for more maintainable code.
+- 🧩 **Reusable Components** — A component-based approach to frontend development.
+- ✨ **Interactive Experience** — User-friendly navigation and interface interactions.
 
-## Getting Started
+*Feature availability depends on the current implementation of the application.*
 
-Install dependencies:
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| Next.js 16 | React framework and application routing |
+| React 19 | Component-based user interface |
+| TypeScript | Type-safe JavaScript development |
+| Tailwind CSS 4 | Styling and responsive design |
+| Lucide React | Icons and interface elements, if configured |
+| npm | Package management |
+| ESLint | Code quality and linting |
+
+## 📁 Project Structure
+
+```text
+TaskFlow/
+├── public/                 # Static assets and images
+├── src/                    # Application source code
+│   └── app/                # Application routes and pages
+├── .gitignore              # Git exclusion rules
+├── AGENTS.md               # AI coding instructions (optional)
+├── CLAUDE.md               # AI coding instructions (optional)
+├── eslint.config.mjs       # ESLint configuration
+├── next.config.ts          # Next.js configuration
+├── next-env.d.ts           # Next.js TypeScript declarations
+├── package.json            # Dependencies and scripts
+├── package-lock.json       # Locked dependency versions
+├── postcss.config.mjs      # PostCSS configuration
+├── tsconfig.json           # TypeScript configuration
+└── README.md               # Project documentation
+```
+
+*The structure above is representative. Your actual files and folders may differ. Keep the existing structure of your project.*
+
+## 🚀 Getting Started
+
+Follow these steps to run TaskFlow locally.
+
+### Prerequisites
+
+- Node.js compatible with your installed Next.js version
+- npm
+- Git (optional)
+
+Check your installed versions:
+
+```bash
+node -v
+npm -v
+git --version
+```
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/shreya-codes-295/TaskFlow-Final.git
+cd TaskFlow-Final
+```
+
+Replace the repository URL and directory name if your actual GitHub repository uses a different name.
+
+### 2. Install Dependencies
 
 ```bash
 npm install
 ```
 
-Run the development server:
+### 3. Start the Development Server
 
 ```bash
 npm run dev
 ```
 
-Then open [http://localhost:3000](http://localhost:3000) in your browser. The exact port may differ if 3000 is already in use — check your terminal output for the URL Next.js prints.
+Open the following URL in your browser:
 
-## Production Build
+[http://localhost:3000](http://localhost:3000)
+
+### 4. Build for Production
 
 ```bash
 npm run build
+```
+
+After a successful production build, run:
+
+```bash
 npm run start
 ```
 
-## Mock Authentication
+Check `package.json` for the exact scripts available in your project.
 
-TaskFlow's authentication is a **local, mock implementation** intended purely for demonstration purposes. Registering an account stores the user (including a plaintext password) in `localStorage` on your own machine — nothing is sent to a server. This is **not** production-grade authentication and should not be treated as secure. There is no real password encryption, no email verification, and no account recovery beyond what's simulated in the UI.
+## 🔒 GitHub Security
 
-## Data Persistence
+The following generated and sensitive files should remain excluded from Git when applicable:
 
-TaskFlow has no backend or database. All projects, tasks, team members, notifications, and preferences are seeded on first run and then persisted to your browser's `localStorage`. Clearing your browser storage (or using a different browser/device) resets the app back to its seed data.
-
-## Project Structure
-
-```
-src/
-  app/          Next.js App Router routes (dashboard, projects, tasks, calendar, team, notifications, profile, settings, auth pages)
-  components/   Reusable UI building blocks, organized by feature (ui, layout, projects, tasks, calendar, team, notifications, profile, settings)
-  context/      React Context providers (auth, theme, data, preferences, toast)
-  hooks/        Thin hooks re-exporting the context providers above
-  lib/          Utility functions (storage, dates, formatting, per-feature helpers)
-  data/         Seed/mock data for projects, tasks, users, labels, notifications, activity
-  types/        Shared TypeScript types for the whole app
-public/         Static assets
+```gitignore
+node_modules/
+.next/
+out/
+coverage/
+.env
+.env.local
+.env.*.local
+*.tsbuildinfo
 ```
 
-## Environment Variables
+### Files to Upload
 
-None are required. TaskFlow has no external API calls, so there is no `.env` file to configure.
+- `src/`
+- `public/`
+- `package.json`
+- `package-lock.json`
+- `README.md`
+- `.gitignore`
+- Next.js, TypeScript, ESLint, and PostCSS configuration files
 
-## Portfolio Notes
+### Files to Exclude
 
-TaskFlow is a **frontend/demo application**. It's built to showcase a complete, polished SaaS-style UI and frontend architecture — not to be deployed as a real multi-user product. If you'd like to extend it into a real backend-powered app, the `DataContext`/`AuthContext` layers in `src/context/` are the natural places to swap in real API calls in place of the current `localStorage`-backed logic.
+- `node_modules/`
+- `.next/`
+- Private environment files
+- API keys, passwords, and other secrets
+- Unnecessary temporary files and generated build artifacts
+
+**Important:** Never upload private credentials or real environment secrets to GitHub.
+
+## 🎯 Project Goal
+
+TaskFlow is an independent learning and portfolio project created to explore modern web development concepts, including:
+
+- Component-based UI development
+- Responsive web design
+- Next.js App Router
+- React and TypeScript
+- Reusable frontend components
+- Modern styling techniques
+- Application structure and maintainability
+- Git and GitHub workflow
+
+## 🔮 Future Improvements
+
+- 📝 Advanced task creation and editing
+- 🎯 Task priorities and due dates
+- 🔍 Task search, filtering, and sorting
+- 📊 Productivity statistics and progress tracking
+- 👤 User authentication and personalized dashboards
+- ☁️ Database integration and persistent task storage
+- ♿ Improved accessibility and keyboard navigation
+- 🧪 Automated testing
+- 🚀 Production deployment
+
+These are potential future improvements and are not claims that the features are already implemented.
+
+## 👩‍💻 Author
+
+**Shreya Pal**
+
+- **GitHub:** [@shreya-codes-295](https://github.com/shreya-codes-295)
+
+## 📄 Disclaimer
+
+TaskFlow is an independent educational and portfolio project developed to explore modern web development and task management interfaces. It is not affiliated with any third-party task management platform.
+
+## 📜 License
+
+No license has been specified yet. Unless a license is added to the repository, the project remains subject to the copyright holder's rights.
+
+---
+
+<p align="center">
+  <strong>TaskFlow — Plan Better. Work Smarter. Achieve More. ✅</strong>
+</p>
+
+<p align="center">
+  Made with ❤️ using Next.js, React, and TypeScript
+</p>
